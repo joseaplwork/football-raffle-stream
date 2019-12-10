@@ -55,12 +55,13 @@
     <script>
         window.addEventListener('load', function() {
             var section = document.querySelector('section');
-            var videoLink = localStorage.getItem('videoLink');
+            var urlParams = new URLSearchParams(window.location.search);
+            var streamId = urlParams.get('id');
 
-            if (videoLink) {
+            if (streamId) {
                 var iframe = document.createElement('iframe');
 
-                iframe.src = videoLink;
+                iframe.src = "https://www.youtube.com/embed/" + streamId + "?controls=0";
                 iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
                 iframe.frameBorder = 0;
                 iframe.allowFullscreen = true;
